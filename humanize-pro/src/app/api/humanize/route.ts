@@ -5,7 +5,7 @@ import { ratelimit } from '@/lib/utils/ratelimit'
 import { z } from 'zod'
 
 const HumanizeSchema = z.object({
-  text: z.string().min(10).max(15000),
+  prompt: z.string().min(10).max(15000),
   tone: z.enum(['academic', 'casual', 'professional', 'creative', 'persuasive']),
   mode: z.enum(['fast', 'advanced']),
   useCase: z.string().default('general'),
@@ -46,7 +46,7 @@ export async function POST(req: NextRequest) {
 
     // 5. Create pipeline and execute
     const pipeline = new HumanizePipeline({
-      text: body.text,
+      text: body.prompt,
       tone: body.tone,
       mode: body.mode,
       useCase: body.useCase,
@@ -58,7 +58,7 @@ export async function POST(req: NextRequest) {
     // Next.js App Router stream response
     return streamResult.toTextStreamResponse({
       async onFinish({ text }) {
-        const inputWords = body.text.split(/\\s+/).filter(Boolean).length
+        const inputWords = body.prompt.split(/\\s+/).filter(Boolean).length
         const outputWords = text ? text.split(/\\s+/).filter(Boolean).length : inputWords
         
         // Track usage asynchronously without blocking the stream

@@ -1,8 +1,8 @@
-import { login } from '../actions'
+import { signup } from '../actions'
 import Link from 'next/link'
-import { Sparkles, BrainCircuit } from 'lucide-react'
+import { CheckCircle2 } from 'lucide-react'
 
-export default function LoginPage({
+export default function SignupPage({
   searchParams,
 }: {
   searchParams: { message: string }
@@ -22,38 +22,56 @@ export default function LoginPage({
           
           <div className="space-y-6">
             <h2 className="text-4xl font-display font-bold leading-tight">
-              Transform AI text into <br/>
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-200 to-amber-500">human brilliance.</span>
+              Start writing like a <br/>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-200 to-amber-500">true professional.</span>
             </h2>
             <p className="text-lg text-zinc-400 leading-relaxed">
-              Bypass AI detectors and engage your audience with our state-of-the-art 4-pass linguistic pipeline.
+              Join thousands of creators who trust our platform to eliminate robotic tones from their content.
             </p>
           </div>
           
-          <div className="mt-16 grid grid-cols-2 gap-6">
-            <div className="p-4 rounded-xl bg-zinc-900/50 border border-zinc-800/50 backdrop-blur-sm">
-              <Sparkles className="text-amber-500 mb-3" size={24} />
-              <h4 className="font-bold mb-1">Undetectable</h4>
-              <p className="text-sm text-zinc-500">Scores 99% human on Turnitin & GPTZero.</p>
+          <div className="mt-12 space-y-4">
+            <div className="flex items-center gap-3 text-zinc-300">
+              <CheckCircle2 className="text-amber-500" size={20} />
+              <span>Free 1,000 words daily limit</span>
             </div>
-            <div className="p-4 rounded-xl bg-zinc-900/50 border border-zinc-800/50 backdrop-blur-sm">
-              <BrainCircuit className="text-amber-500 mb-3" size={24} />
-              <h4 className="font-bold mb-1">Context-Aware</h4>
-              <p className="text-sm text-zinc-500">Preserves original meaning and formatting.</p>
+            <div className="flex items-center gap-3 text-zinc-300">
+              <CheckCircle2 className="text-amber-500" size={20} />
+              <span>Advanced 4-pass linguistic rewrite</span>
+            </div>
+            <div className="flex items-center gap-3 text-zinc-300">
+              <CheckCircle2 className="text-amber-500" size={20} />
+              <span>Multiple tones and use cases</span>
+            </div>
+            <div className="flex items-center gap-3 text-zinc-300">
+              <CheckCircle2 className="text-amber-500" size={20} />
+              <span>Guaranteed to bypass detectors</span>
             </div>
           </div>
         </div>
       </div>
 
       {/* Right side - Form */}
-      <div className="w-full lg:w-1/2 flex items-center justify-center p-6 sm:p-12">
+      <div className="w-full lg:w-1/2 flex items-center justify-center p-6 sm:p-12 overflow-y-auto">
         <div className="w-full max-w-md space-y-8">
           <div className="text-center lg:text-left">
-            <h1 className="text-3xl font-display font-bold text-white tracking-tight">Welcome Back</h1>
-            <p className="text-zinc-400 mt-2 text-sm">Enter your details to access your dashboard.</p>
+            <h1 className="text-3xl font-display font-bold text-white tracking-tight">Create an account</h1>
+            <p className="text-zinc-400 mt-2 text-sm">Sign up in seconds to start humanizing your text.</p>
           </div>
           
           <form className="space-y-5">
+            <div className="space-y-1.5">
+              <label htmlFor="full_name" className="block text-sm font-medium text-zinc-300">Full Name</label>
+              <input 
+                id="full_name" 
+                name="full_name" 
+                type="text" 
+                required 
+                className="block w-full rounded-lg border border-zinc-800 bg-zinc-900/50 px-4 py-3 text-white placeholder-zinc-600 focus:border-amber-500 focus:outline-none focus:ring-1 focus:ring-amber-500 transition-colors" 
+                placeholder="John Doe"
+              />
+            </div>
+            
             <div className="space-y-1.5">
               <label htmlFor="email" className="block text-sm font-medium text-zinc-300">Email Address</label>
               <input 
@@ -67,10 +85,7 @@ export default function LoginPage({
             </div>
             
             <div className="space-y-1.5">
-              <div className="flex items-center justify-between">
-                <label htmlFor="password" className="block text-sm font-medium text-zinc-300">Password</label>
-                <Link href="#" className="text-xs text-amber-500 hover:text-amber-400 transition-colors">Forgot password?</Link>
-              </div>
+              <label htmlFor="password" className="block text-sm font-medium text-zinc-300">Password</label>
               <input 
                 id="password" 
                 name="password" 
@@ -78,16 +93,17 @@ export default function LoginPage({
                 required 
                 className="block w-full rounded-lg border border-zinc-800 bg-zinc-900/50 px-4 py-3 text-white placeholder-zinc-600 focus:border-amber-500 focus:outline-none focus:ring-1 focus:ring-amber-500 transition-colors" 
                 placeholder="••••••••"
+                minLength={6}
               />
             </div>
 
             <div className="pt-2">
               <button 
                 type="submit"
-                formAction={login} 
-                className="w-full bg-white text-black hover:bg-zinc-200 h-12 rounded-lg font-bold transition-all active:scale-[0.98] flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(255,255,255,0.1)]"
+                formAction={signup} 
+                className="w-full bg-amber-500 text-black hover:bg-amber-400 h-12 rounded-lg font-bold transition-all active:scale-[0.98] flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(212,168,83,0.3)]"
               >
-                Sign In →
+                Create Account →
               </button>
             </div>
             
@@ -96,7 +112,7 @@ export default function LoginPage({
                 <div className="w-full border-t border-zinc-800"></div>
               </div>
               <div className="relative flex justify-center text-xs uppercase tracking-wider">
-                <span className="bg-black px-4 text-zinc-500">Or continue with</span>
+                <span className="bg-black px-4 text-zinc-500">Or sign up with</span>
               </div>
             </div>
 
@@ -120,9 +136,9 @@ export default function LoginPage({
             )}
 
             <p className="text-center mt-8 text-sm text-zinc-500">
-              Don't have an account?{' '}
-              <Link href="/auth/signup" className="text-white hover:text-amber-500 font-medium transition-colors underline underline-offset-4">
-                Sign up
+              Already have an account?{' '}
+              <Link href="/auth/login" className="text-white hover:text-amber-500 font-medium transition-colors underline underline-offset-4">
+                Log in
               </Link>
             </p>
           </form>
