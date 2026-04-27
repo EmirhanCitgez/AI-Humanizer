@@ -62,12 +62,20 @@ export default function LoginPage({
           </div>
 
           <div className="flex flex-col gap-4 pt-2">
-            <Button formAction={login} className="w-full bg-white text-black hover:bg-zinc-200">
+            <button 
+              type="submit"
+              formAction={login} 
+              className="w-full bg-white text-black hover:bg-zinc-200 h-11 rounded-md font-medium text-sm transition-colors"
+            >
               Log In
-            </Button>
-            <Button formAction={signup} variant="outline" className="w-full border-zinc-700 text-white hover:bg-zinc-800">
+            </button>
+            <button 
+              type="submit"
+              formAction={signup} 
+              className="w-full border border-zinc-700 bg-transparent text-white hover:bg-zinc-800 h-11 rounded-md font-medium text-sm transition-colors"
+            >
               Sign Up
-            </Button>
+            </button>
           </div>
           
           {searchParams?.message && (
