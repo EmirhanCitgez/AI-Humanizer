@@ -2,7 +2,7 @@
 
 import { useEditorStore } from '@/store/editorStore'
 import { Button } from '@/components/ui/button'
-import { useCompletion } from 'ai/react'
+import { useCompletion } from '@ai-sdk/react'
 import { useEffect } from 'react'
 
 export default function HumanizePage() {
@@ -39,7 +39,7 @@ export default function HumanizePage() {
         <div className="flex items-center gap-4 bg-zinc-900 p-2 rounded-lg border border-zinc-800">
           <select 
             value={tone}
-            onChange={(e) => setTone(e.target.value as any)}
+            onChange={(e) => setTone(e.target.value as "academic" | "casual" | "professional" | "creative" | "persuasive")}
             className="bg-transparent text-sm text-zinc-300 outline-none px-2"
           >
             <option value="academic">Academic</option>
@@ -53,7 +53,7 @@ export default function HumanizePage() {
           
           <select 
             value={mode}
-            onChange={(e) => setMode(e.target.value as any)}
+            onChange={(e) => setMode(e.target.value as "fast" | "advanced")}
             className="bg-transparent text-sm text-zinc-300 outline-none px-2"
           >
             <option value="fast">⚡ Fast</option>

@@ -56,7 +56,20 @@ export async function POST(req: NextRequest) {
     const streamResult = await pipeline.execute()
     
     // Next.js App Router stream response
-    return streamResult.toDataStreamResponse()
+    return streamResult.toTextStreamResponse({
+      async onFinish({ text }) {
+        const inputWords = body.text.split(/\\s+/).filter(Boolean).length
+        const outputWords = text ? text.split(/\\s+/).filter(Boolean).length : inputWords
+        
+        // Track usage asynchronously without blocking the stream
+        await supabase.rpc('increment_usage', {
+          p_user_id: user.id,
+          p_words_input: inputWords,
+          p_words_output: outputWords,
+          p_tokens: Math.round(outputWords * 1.3) // rough estimate
+        })
+      }
+    })
 
   } catch (error) {
     if (error instanceof z.ZodError) {

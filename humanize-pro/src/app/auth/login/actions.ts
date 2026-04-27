@@ -15,7 +15,7 @@ export async function login(formData: FormData) {
   const { error } = await supabase.auth.signInWithPassword(data)
 
   if (error) {
-    redirect('/auth/login?message=Could not authenticate user')
+    redirect(`/auth/login?message=${encodeURIComponent(error.message)}`)
   }
 
   revalidatePath('/', 'layout')
@@ -30,10 +30,14 @@ export async function signup(formData: FormData) {
     password: formData.get('password') as string,
   }
 
-  const { error } = await supabase.auth.signUp(data)
+  const { data: authData, error } = await supabase.auth.signUp(data)
 
   if (error) {
-    redirect('/auth/login?message=Could not create user')
+    redirect(`/auth/login?message=${encodeURIComponent(error.message)}`)
+  }
+
+  if (!authData.session) {
+    redirect('/auth/login?message=Kayıt başarılı! Lütfen e-posta adresinize gelen doğrulama linkine tıklayın.')
   }
 
   revalidatePath('/', 'layout')
