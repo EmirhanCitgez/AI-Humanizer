@@ -1,12 +1,76 @@
 import { signup } from '../actions'
 import Link from 'next/link'
-import { CheckCircle2 } from 'lucide-react'
+import { CheckCircle2, Mail, ArrowRight, Inbox } from 'lucide-react'
 
 export default function SignupPage({
   searchParams,
 }: {
   searchParams: { message?: string, type?: string }
 }) {
+  // Email confirmation success screen
+  if (searchParams?.type === 'success') {
+    return (
+      <div className="min-h-screen w-full flex items-center justify-center bg-black text-white font-sans selection:bg-amber-500/30 relative overflow-hidden">
+        {/* Background glow */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-amber-500/8 rounded-full blur-[140px] pointer-events-none" />
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f15_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f15_1px,transparent_1px)] bg-[size:32px_32px]" />
+
+        <div className="relative z-10 max-w-md w-full mx-auto px-6 text-center">
+          {/* Logo */}
+          <Link href="/" className="inline-flex items-center gap-2 text-xl font-display font-bold mb-12 hover:opacity-80 transition-opacity">
+            <span className="text-amber-500">✦</span> HumanizeAI Pro
+          </Link>
+
+          {/* Icon */}
+          <div className="relative mx-auto mb-8 w-24 h-24">
+            <div className="absolute inset-0 bg-amber-500/20 rounded-full blur-xl" />
+            <div className="relative w-24 h-24 rounded-full bg-zinc-900 border-2 border-amber-500/40 flex items-center justify-center">
+              <Inbox className="text-amber-500" size={40} />
+            </div>
+          </div>
+
+          <h1 className="text-3xl font-display font-bold text-white mb-3">Check your inbox</h1>
+          <p className="text-zinc-400 text-base leading-relaxed mb-8">
+            We've sent a confirmation link to your email address.
+            <br />
+            Click the link to activate your account and start humanizing.
+          </p>
+
+          {/* Steps */}
+          <div className="bg-zinc-900/60 border border-zinc-800 rounded-2xl p-6 mb-8 text-left space-y-4">
+            {[
+              { icon: '1', text: 'Open your email inbox' },
+              { icon: '2', text: 'Find the email from HumanizeAI Pro' },
+              { icon: '3', text: 'Click the confirmation link' },
+            ].map((step) => (
+              <div key={step.icon} className="flex items-center gap-4">
+                <div className="w-7 h-7 rounded-full bg-amber-500/10 border border-amber-500/30 flex items-center justify-center shrink-0">
+                  <span className="text-amber-500 text-xs font-bold">{step.icon}</span>
+                </div>
+                <span className="text-zinc-300 text-sm">{step.text}</span>
+              </div>
+            ))}
+          </div>
+
+          <Link
+            href="/auth/login"
+            className="inline-flex items-center gap-2 w-full justify-center bg-amber-500 hover:bg-amber-400 text-black py-3 px-6 rounded-xl font-bold transition-all shadow-[0_0_20px_rgba(212,168,83,0.3)] hover:shadow-[0_0_30px_rgba(212,168,83,0.5)]"
+          >
+            Go to Login <ArrowRight size={18} />
+          </Link>
+
+          <p className="text-zinc-600 text-xs mt-6">
+            Didn't receive an email? Check your spam folder or{' '}
+            <Link href="/auth/signup" className="text-zinc-400 hover:text-amber-500 transition-colors underline underline-offset-4">
+              try again
+            </Link>
+            .
+          </p>
+        </div>
+      </div>
+    )
+  }
+
   return (
     <div className="min-h-screen w-full flex bg-black text-white font-sans selection:bg-amber-500/30">
       
