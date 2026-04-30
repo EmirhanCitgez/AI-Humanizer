@@ -18,7 +18,7 @@ export default function LandingPage() {
       <header className="fixed top-0 w-full z-50 border-b border-white/5 bg-black/50 backdrop-blur-md">
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
           <div className="text-xl font-logo flex items-center gap-2">
-            <span className="text-amber-500">✦</span> HumanizeAI Pro
+            <span className="text-amber-500">✦</span> LexoraAI
           </div>
           <nav className="hidden md:flex gap-8 text-sm font-medium text-zinc-400">
             <Link href="#features" className="hover:text-white transition-colors">Features</Link>
@@ -361,7 +361,7 @@ export default function LandingPage() {
         <div className="max-w-4xl mx-auto text-center relative z-10">
           <h2 className="text-4xl md:text-5xl font-display font-bold mb-6">Ready to sound human again?</h2>
           <p className="text-xl text-zinc-300 mb-10 max-w-2xl mx-auto">
-            Join thousands of writers, marketers, and students who trust HumanizeAI Pro to elevate their content.
+            Join thousands of writers, marketers, and students who trust LexoraAI to elevate their content.
           </p>
           <Link href="/auth/login" className="inline-flex bg-white text-black px-10 py-4 rounded-full text-lg font-bold hover:bg-zinc-200 transition-colors shadow-2xl">
             Create Your Free Account
@@ -373,14 +373,14 @@ export default function LandingPage() {
       <footer className="py-12 px-6 border-t border-zinc-900 bg-black text-center text-zinc-600 text-sm">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
           <div className="flex items-center gap-2 font-logo text-zinc-400">
-            <span className="text-amber-500">✦</span> HumanizeAI Pro
+            <span className="text-amber-500">✦</span> LexoraAI
           </div>
           <div className="flex gap-6">
             <Link href="#" className="hover:text-zinc-300 transition-colors">Privacy Policy</Link>
             <Link href="#" className="hover:text-zinc-300 transition-colors">Terms of Service</Link>
             <Link href="#" className="hover:text-zinc-300 transition-colors">Contact</Link>
           </div>
-          <p>© 2026 HumanizeAI Pro. All rights reserved.</p>
+          <p>© 2026 LexoraAI. All rights reserved.</p>
         </div>
       </footer>
     </div>

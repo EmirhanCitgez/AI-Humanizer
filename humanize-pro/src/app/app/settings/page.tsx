@@ -358,7 +358,7 @@ export default async function SettingsPage({ searchParams }: { searchParams: { t
                       <Key size={20} className="text-amber-500" />
                       Developer API Keys
                     </h2>
-                    <p className="text-zinc-400 text-sm">Use these keys to authenticate API requests to the HumanizeAI Pro engine.</p>
+                    <p className="text-zinc-400 text-sm">Use these keys to authenticate API requests to the LexoraAI engine.</p>
                   </div>
                   <button className="bg-white text-black px-4 py-2 rounded-lg font-medium hover:bg-zinc-200 transition-colors flex items-center gap-2 text-sm shadow-sm">
                     <CheckCircle2 size={16} /> Create New Key

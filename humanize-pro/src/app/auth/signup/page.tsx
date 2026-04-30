@@ -18,7 +18,7 @@ export default function SignupPage({
         <div className="relative z-10 max-w-md w-full mx-auto px-6 text-center">
           {/* Logo */}
           <Link href="/" className="inline-flex items-center gap-2 text-xl font-logo mb-12 hover:opacity-80 transition-opacity">
-            <span className="text-amber-500">✦</span> HumanizeAI Pro
+            <span className="text-amber-500">✦</span> LexoraAI
           </Link>
 
           {/* Icon */}
@@ -40,7 +40,7 @@ export default function SignupPage({
           <div className="bg-zinc-900/60 border border-zinc-800 rounded-2xl p-6 mb-8 text-left space-y-4">
             {[
               { icon: '1', text: 'Open your email inbox' },
-              { icon: '2', text: 'Find the email from HumanizeAI Pro' },
+              { icon: '2', text: 'Find the email from LexoraAI' },
               { icon: '3', text: 'Click the confirmation link' },
             ].map((step) => (
               <div key={step.icon} className="flex items-center gap-4">
@@ -81,7 +81,7 @@ export default function SignupPage({
 
         <div className="relative z-10 max-w-lg">
           <Link href="/" className="flex items-center gap-2 text-2xl font-logo mb-12 hover:opacity-80 transition-opacity">
-            <span className="text-amber-500">✦</span> HumanizeAI Pro
+            <span className="text-amber-500">✦</span> LexoraAI
           </Link>
 
           {/* Student badge */}
@@ -95,7 +95,7 @@ export default function SignupPage({
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-200 to-amber-500">undetectable essays.</span>
             </h2>
             <p className="text-lg text-zinc-400 leading-relaxed">
-              Thousands of students trust HumanizeAI Pro to submit AI-assisted work that bypasses Turnitin, GPTZero, and every major detector — while keeping their original arguments intact.
+              Thousands of students trust LexoraAI to submit AI-assisted work that bypasses Turnitin, GPTZero, and every major detector — while keeping their original arguments intact.
             </p>
           </div>
 

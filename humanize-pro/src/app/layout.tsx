@@ -9,7 +9,7 @@ const inter = Inter({ subsets: ['latin'], variable: '--font-sans' });
 const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
   variable: '--font-logo',
-  weight: ['700', '800'],
+  weight: ['600', '700'],
 });
 
 const geistSans = localFont({
@@ -24,7 +24,7 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "HumanizeAI Pro",
+  title: "LexoraAI",
   description: "Turn AI Text Into Human Writing.",
 };
 

@@ -16,7 +16,7 @@ export default function UpdatePasswordPage({
         
         <div className="relative z-10 max-w-lg">
           <div className="flex items-center gap-2 text-2xl font-logo mb-12">
-            <span className="text-amber-500">✦</span> HumanizeAI Pro
+            <span className="text-amber-500">✦</span> LexoraAI
           </div>
           
           <div className="space-y-6">
