@@ -144,7 +144,7 @@ export default function SignupPage({
             <p className="text-zinc-400 mt-2 text-sm">Sign up in seconds to start humanizing your text.</p>
           </div>
 
-          <form className="space-y-5">
+          <form className="space-y-5" action={signup}>
             <div className="space-y-1.5">
               <label htmlFor="full_name" className="block text-sm font-medium text-zinc-300">Full Name</label>
               <input
@@ -185,14 +185,15 @@ export default function SignupPage({
             <div className="pt-2">
               <button
                 type="submit"
-                formAction={signup}
                 className="w-full bg-amber-500 text-black hover:bg-amber-400 h-12 rounded-lg font-bold transition-all active:scale-[0.98] flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(212,168,83,0.3)]"
               >
                 Create Account →
               </button>
             </div>
+          </form>
 
-            <div className="relative my-6">
+          <div className="space-y-5 mt-5">
+            <div className="relative">
               <div className="absolute inset-0 flex items-center">
                 <div className="w-full border-t border-zinc-800"></div>
               </div>
@@ -217,18 +218,18 @@ export default function SignupPage({
             </form>
 
             {searchParams?.message && (
-              <div className={`mt-6 p-4 text-sm rounded-lg border text-center ${searchParams.type === 'success' ? 'bg-green-500/10 text-green-500 border-green-500/20' : 'bg-amber-500/10 text-amber-500 border-amber-500/20'}`}>
+              <div className={`p-4 text-sm rounded-lg border text-center ${searchParams.type === 'success' ? 'bg-green-500/10 text-green-500 border-green-500/20' : 'bg-amber-500/10 text-amber-500 border-amber-500/20'}`}>
                 {searchParams.message}
               </div>
             )}
 
-            <p className="text-center mt-8 text-sm text-zinc-500">
+            <p className="text-center text-sm text-zinc-500">
               Already have an account?{' '}
               <Link href="/auth/login" className="text-white hover:text-amber-500 font-medium transition-colors underline underline-offset-4">
                 Log in
               </Link>
             </p>
-          </form>
+          </div>
         </div>
       </div>
     </div>

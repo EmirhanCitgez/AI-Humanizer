@@ -53,7 +53,7 @@ export default function LoginPage({
             <p className="text-zinc-400 mt-2 text-sm">Enter your details to access your dashboard.</p>
           </div>
           
-          <form className="space-y-5">
+          <form className="space-y-5" action={login}>
             <div className="space-y-1.5">
               <label htmlFor="email" className="block text-sm font-medium text-zinc-300">Email Address</label>
               <input 
@@ -84,14 +84,15 @@ export default function LoginPage({
             <div className="pt-2">
               <button 
                 type="submit"
-                formAction={login} 
                 className="w-full bg-white text-black hover:bg-zinc-200 h-12 rounded-lg font-bold transition-all active:scale-[0.98] flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(255,255,255,0.1)]"
               >
                 Sign In →
               </button>
             </div>
-            
-            <div className="relative my-6">
+          </form>
+
+          <div className="space-y-5 mt-5">
+            <div className="relative">
               <div className="absolute inset-0 flex items-center">
                 <div className="w-full border-t border-zinc-800"></div>
               </div>
@@ -114,20 +115,20 @@ export default function LoginPage({
                 Google
               </button>
             </form>
-            
+
             {searchParams?.message && (
-              <div className="mt-6 p-4 bg-amber-500/10 text-amber-500 text-sm rounded-lg border border-amber-500/20 text-center">
+              <div className="p-4 bg-amber-500/10 text-amber-500 text-sm rounded-lg border border-amber-500/20 text-center">
                 {searchParams.message}
               </div>
             )}
 
-            <p className="text-center mt-8 text-sm text-zinc-500">
+            <p className="text-center text-sm text-zinc-500">
               Don't have an account?{' '}
               <Link href="/auth/signup" className="text-white hover:text-amber-500 font-medium transition-colors underline underline-offset-4">
                 Sign up
               </Link>
             </p>
-          </form>
+          </div>
         </div>
       </div>
     </div>
