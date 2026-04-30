@@ -16,9 +16,9 @@ export default function SignupPage({
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-amber-500/10 rounded-full blur-[120px] pointer-events-none" />
         
         <div className="relative z-10 max-w-lg">
-          <div className="flex items-center gap-2 text-2xl font-display font-bold mb-12">
+          <Link href="/" className="flex items-center gap-2 text-2xl font-display font-bold mb-12 hover:opacity-80 transition-opacity">
             <span className="text-amber-500">✦</span> HumanizeAI Pro
-          </div>
+          </Link>
           
           {/* Student badge */}
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-amber-500/30 bg-amber-500/10 text-amber-400 text-sm font-medium mb-8">
