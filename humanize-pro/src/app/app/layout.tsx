@@ -25,7 +25,7 @@ export default async function AppLayout({ children }: { children: React.ReactNod
       {/* Sidebar */}
       <aside className="w-64 border-r border-zinc-800 flex flex-col bg-[#0A0A0B]">
         <div className="p-6">
-          <Link href="/app/humanize" className="text-xl font-logo flex items-center gap-2">
+          <Link href="/app/humanize" className="text-2xl font-logo flex items-center gap-2">
             <span className="text-amber-500">✦</span> HumanizeAI
           </Link>
         </div>

@@ -9,7 +9,7 @@ const inter = Inter({ subsets: ['latin'], variable: '--font-sans' });
 const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
   variable: '--font-logo',
-  weight: ['700'],
+  weight: ['700', '800'],
 });
 
 const geistSans = localFont({
