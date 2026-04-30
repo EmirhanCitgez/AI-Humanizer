@@ -17,7 +17,7 @@ export default function SignupPage({
 
         <div className="relative z-10 max-w-md w-full mx-auto px-6 text-center">
           {/* Logo */}
-          <Link href="/" className="inline-flex items-center gap-2 text-xl font-display font-bold mb-12 hover:opacity-80 transition-opacity">
+          <Link href="/" className="inline-flex items-center gap-2 text-xl font-logo mb-12 hover:opacity-80 transition-opacity">
             <span className="text-amber-500">✦</span> HumanizeAI Pro
           </Link>
 
@@ -80,7 +80,7 @@ export default function SignupPage({
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-amber-500/10 rounded-full blur-[120px] pointer-events-none" />
 
         <div className="relative z-10 max-w-lg">
-          <Link href="/" className="flex items-center gap-2 text-2xl font-display font-bold mb-12 hover:opacity-80 transition-opacity">
+          <Link href="/" className="flex items-center gap-2 text-2xl font-logo mb-12 hover:opacity-80 transition-opacity">
             <span className="text-amber-500">✦</span> HumanizeAI Pro
           </Link>
 

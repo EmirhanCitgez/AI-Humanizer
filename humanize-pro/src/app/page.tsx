@@ -17,7 +17,7 @@ export default function LandingPage() {
       {/* Header */}
       <header className="fixed top-0 w-full z-50 border-b border-white/5 bg-black/50 backdrop-blur-md">
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-          <div className="text-xl font-display font-bold flex items-center gap-2">
+          <div className="text-xl font-logo flex items-center gap-2">
             <span className="text-amber-500">✦</span> HumanizeAI Pro
           </div>
           <nav className="hidden md:flex gap-8 text-sm font-medium text-zinc-400">
@@ -372,7 +372,7 @@ export default function LandingPage() {
       {/* Footer */}
       <footer className="py-12 px-6 border-t border-zinc-900 bg-black text-center text-zinc-600 text-sm">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
-          <div className="flex items-center gap-2 font-display font-bold text-zinc-400">
+          <div className="flex items-center gap-2 font-logo text-zinc-400">
             <span className="text-amber-500">✦</span> HumanizeAI Pro
           </div>
           <div className="flex gap-6">

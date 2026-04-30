@@ -16,7 +16,7 @@ export default function ResetPasswordPage({
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-amber-500/10 rounded-full blur-[120px] pointer-events-none" />
         
         <div className="relative z-10 max-w-lg">
-          <div className="flex items-center gap-2 text-2xl font-display font-bold mb-12">
+          <div className="flex items-center gap-2 text-2xl font-logo mb-12">
             <span className="text-amber-500">✦</span> HumanizeAI Pro
           </div>
           
