@@ -1,10 +1,23 @@
 import { Ratelimit } from '@upstash/ratelimit'
 import { Redis } from '@upstash/redis'
 
-// Create a new ratelimiter, that allows 5 requests per 1 minute
-export const ratelimit = new Ratelimit({
+export const freeRatelimit = new Ratelimit({
   redis: Redis.fromEnv(),
-  limiter: Ratelimit.slidingWindow(5, '1 m'),
+  limiter: Ratelimit.fixedWindow(3, '1 d'),
   analytics: true,
-  prefix: '@upstash/ratelimit',
+  prefix: 'humanize_free',
+})
+
+export const proRatelimit = new Ratelimit({
+  redis: Redis.fromEnv(),
+  limiter: Ratelimit.slidingWindow(200, '1 d'),
+  analytics: true,
+  prefix: 'humanize_pro',
+})
+
+export const premiumRatelimit = new Ratelimit({
+  redis: Redis.fromEnv(),
+  limiter: Ratelimit.slidingWindow(1000, '1 d'),
+  analytics: true,
+  prefix: 'humanize_premium',
 })

@@ -1,13 +1,31 @@
 import Link from 'next/link'
 import { Zap, LayoutTemplate, Clock, Settings, User } from 'lucide-react'
+import { createClient } from '@/lib/supabase/server'
 
-export default function AppLayout({ children }: { children: React.ReactNode }) {
+export default async function AppLayout({ children }: { children: React.ReactNode }) {
+  const supabase = createClient()
+  const { data: { user } } = await supabase.auth.getUser()
+
+  let profile = null
+  if (user) {
+    const { data } = await supabase
+      .from('profiles')
+      .select('full_name, plan')
+      .eq('id', user.id)
+      .single()
+    profile = data
+  }
+
+  const displayName = profile?.full_name || user?.email?.split('@')[0] || 'User'
+  const plan = profile?.plan || 'free'
+  const planDisplay = plan.charAt(0).toUpperCase() + plan.slice(1) + ' Plan'
+
   return (
     <div className="flex h-screen bg-black text-white overflow-hidden">
       {/* Sidebar */}
       <aside className="w-64 border-r border-zinc-800 flex flex-col bg-[#0A0A0B]">
         <div className="p-6">
-          <Link href="/app/dashboard" className="text-xl font-display font-bold flex items-center gap-2">
+          <Link href="/app/humanize" className="text-xl font-display font-bold flex items-center gap-2">
             <span className="text-amber-500">✦</span> HumanizeAI
           </Link>
         </div>
@@ -31,11 +49,15 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
           </Link>
           <div className="flex items-center gap-3 px-3 py-2">
             <div className="w-8 h-8 rounded-full bg-zinc-800 flex items-center justify-center border border-zinc-700">
-              <User size={16} />
+              <span className="text-xs font-bold text-zinc-400">
+                {displayName.charAt(0).toUpperCase()}
+              </span>
             </div>
-            <div className="flex flex-col">
-              <span className="text-sm font-medium">User</span>
-              <span className="text-xs text-amber-500">Free Plan</span>
+            <div className="flex flex-col overflow-hidden">
+              <span className="text-sm font-medium truncate">{displayName}</span>
+              <span className={`text-xs ${plan === 'free' ? 'text-zinc-500' : 'text-amber-500 font-bold'}`}>
+                {planDisplay}
+              </span>
             </div>
           </div>
         </div>

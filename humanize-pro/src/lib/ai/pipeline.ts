@@ -28,7 +28,7 @@ export class HumanizePipeline {
 
   private async fastPass() {
     return streamText({
-      model: openai('gpt-4o-mini'),
+      model: anthropic('claude-3-haiku-20240307'),
       system: PROMPTS.system(this.config.tone, this.config.useCase),
       prompt: this.config.text,
       temperature: 0.85,
@@ -40,7 +40,7 @@ export class HumanizePipeline {
 
     // Pass 1: Structural variation
     const { text: pass1 } = await generateText({
-      model: openai('gpt-4o-mini'),
+      model: anthropic('claude-3-haiku-20240307'),
       system: PROMPTS.structureVariation,
       prompt: text,
       temperature: 0.7,
@@ -48,7 +48,7 @@ export class HumanizePipeline {
 
     // Pass 2: Synonym & vocabulary diversification
     const { text: pass2 } = await generateText({
-      model: openai('gpt-4o-mini'),
+      model: anthropic('claude-3-haiku-20240307'),
       system: PROMPTS.vocabularyDiversify(this.config.tone),
       prompt: pass1,
       temperature: 0.8,
@@ -56,14 +56,14 @@ export class HumanizePipeline {
 
     // Pass 3: Sentence rhythm & burstiness
     const { text: pass3 } = await generateText({
-      model: openai('gpt-4o-mini'),
+      model: anthropic('claude-3-haiku-20240307'),
       system: PROMPTS.rhythmRandomize,
       prompt: pass2,
       temperature: 0.9,
     })
 
     // Pass 4: Final polish (streamed)
-    const model = this.config.plan === 'free' ? openai('gpt-4o-mini') : anthropic('claude-3-5-sonnet-latest')
+    const model = this.config.plan === 'free' ? anthropic('claude-3-haiku-20240307') : anthropic('claude-3-5-sonnet-latest')
     
     return streamText({
       model,

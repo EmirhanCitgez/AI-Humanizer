@@ -1,9 +1,9 @@
 'use client'
 
 import Link from 'next/link'
-import { motion } from 'framer-motion'
 import { ArrowRight, CheckCircle2, Zap, BrainCircuit, ShieldCheck, PenTool, Sparkles, MessageSquare, ChevronDown } from 'lucide-react'
 import { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 
 export default function LandingPage() {
   const [activeFaq, setActiveFaq] = useState<number | null>(null)
@@ -43,11 +43,7 @@ export default function LandingPage() {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[600px] bg-amber-500/10 rounded-full blur-[150px] pointer-events-none" />
         
         <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center relative z-10">
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-          >
+          <div className="animate-in fade-in slide-in-from-left-8 duration-700">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-amber-500/30 bg-amber-500/10 text-amber-500 text-sm font-medium mb-8">
               <span className="w-2 h-2 rounded-full bg-amber-500 animate-pulse" />
               The #1 Advanced AI Text Humanizer
@@ -64,14 +60,9 @@ export default function LandingPage() {
               </Link>
               <span className="text-sm text-zinc-500">No credit card required.</span>
             </div>
-          </motion.div>
+          </div>
 
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="relative"
-          >
+          <div className="relative animate-in fade-in zoom-in-95 duration-700 delay-200 fill-mode-both">
             <div className="rounded-2xl border border-zinc-800 bg-zinc-900/80 backdrop-blur-sm overflow-hidden shadow-2xl">
               <div className="flex border-b border-zinc-800">
                 <div className="flex-1 p-4 border-r border-zinc-800 bg-zinc-900">
@@ -100,7 +91,7 @@ export default function LandingPage() {
                 </div>
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
 
@@ -206,56 +197,122 @@ export default function LandingPage() {
       </section>
 
       {/* Pricing */}
-      <section id="pricing" className="py-24 px-6">
-        <div className="max-w-4xl mx-auto text-center mb-16">
-          <h2 className="text-4xl font-display font-bold mb-4">Simple, transparent pricing</h2>
-          <p className="text-xl text-zinc-400">Start for free, upgrade when you need advanced features.</p>
+      <section id="pricing" className="py-24 px-6 relative overflow-hidden">
+        {/* Aurora background blobs */}
+        <div className="absolute inset-0 pointer-events-none z-0">
+          <div className="absolute w-[500px] h-[500px] rounded-full bg-amber-600/10 blur-[120px] top-0 left-1/4 animate-[auroraMove1_18s_ease-in-out_infinite_alternate]" />
+          <div className="absolute w-[400px] h-[400px] rounded-full bg-orange-500/8 blur-[100px] bottom-0 right-1/4 animate-[auroraMove2_22s_ease-in-out_infinite_alternate]" />
         </div>
 
-        <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-8">
-          {/* Free Tier */}
-          <div className="p-8 rounded-3xl bg-zinc-900 border border-zinc-800">
-            <h3 className="text-2xl font-bold mb-2">Free</h3>
-            <p className="text-zinc-400 mb-6">Perfect for trying out our humanizer.</p>
-            <div className="text-5xl font-bold mb-8">$0<span className="text-lg text-zinc-500 font-normal">/mo</span></div>
-            
-            <ul className="space-y-4 mb-8">
-              <li className="flex items-center gap-3 text-zinc-300"><CheckCircle2 className="text-amber-500" size={20}/> 1,000 words per day</li>
-              <li className="flex items-center gap-3 text-zinc-300"><CheckCircle2 className="text-amber-500" size={20}/> Fast Mode (Single pass)</li>
-              <li className="flex items-center gap-3 text-zinc-300"><CheckCircle2 className="text-amber-500" size={20}/> 3 basic tones</li>
-            </ul>
-            
-            <Link href="/auth/login" className="block w-full text-center bg-zinc-800 hover:bg-zinc-700 text-white py-3 rounded-full font-bold transition-colors">
-              Start Free
-            </Link>
-          </div>
+        <div className="relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: -16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+            className="max-w-4xl mx-auto text-center mb-16"
+          >
+            <h2 className="text-4xl font-display font-bold mb-4">Simple, transparent pricing</h2>
+            <p className="text-xl text-zinc-400">Start for free, upgrade when you need advanced features.</p>
+          </motion.div>
 
-          {/* Pro Tier */}
-          <div className="p-8 rounded-3xl bg-zinc-900 border-2 border-amber-500 relative transform md:-translate-y-4 shadow-2xl shadow-amber-500/10">
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-amber-500 text-black px-4 py-1 rounded-full text-sm font-bold">
-              MOST POPULAR
-            </div>
-            <h3 className="text-2xl font-bold mb-2">Pro</h3>
-            <p className="text-zinc-400 mb-6">For professionals who need undetectable writing.</p>
-            <div className="text-5xl font-bold mb-8">$15<span className="text-lg text-zinc-500 font-normal">/mo</span></div>
-            
-            <ul className="space-y-4 mb-8">
-              <li className="flex items-center gap-3 text-white"><CheckCircle2 className="text-amber-500" size={20}/> Unlimited words</li>
-              <li className="flex items-center gap-3 text-white font-medium"><CheckCircle2 className="text-amber-500" size={20}/> Advanced Mode (4-pass pipeline)</li>
-              <li className="flex items-center gap-3 text-white"><CheckCircle2 className="text-amber-500" size={20}/> Claude 3.5 Sonnet Integration</li>
-              <li className="flex items-center gap-3 text-white"><CheckCircle2 className="text-amber-500" size={20}/> All tones & templates</li>
-              <li className="flex items-center gap-3 text-white"><CheckCircle2 className="text-amber-500" size={20}/> Save custom templates</li>
-            </ul>
-            
-            <Link href="/auth/login" className="block w-full text-center bg-amber-500 hover:bg-amber-400 text-black py-3 rounded-full font-bold transition-colors shadow-[0_0_15px_rgba(212,168,83,0.4)]">
-              Upgrade to Pro
-            </Link>
+          <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-8 items-center">
+            {/* Free Tier */}
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              whileHover={{ y: -8, scale: 1.02 }}
+              className="relative p-8 rounded-3xl bg-zinc-900/80 border border-zinc-800 backdrop-blur-sm overflow-hidden group cursor-default"
+            >
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" style={{background: 'radial-gradient(circle at 50% 0%, rgba(212,168,83,0.08) 0%, transparent 70%)'}} />
+              <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-zinc-600 to-transparent group-hover:via-amber-500/50 transition-all duration-700" />
+              <h3 className="text-2xl font-bold mb-2">Free</h3>
+              <p className="text-zinc-400 mb-6">Perfect for trying out our humanizer.</p>
+              <div className="text-5xl font-bold mb-8">$0<span className="text-lg text-zinc-500 font-normal">/forever</span></div>
+              <ul className="space-y-4 mb-8">
+                {['3 Requests per day','Max 150 words per request','Fast Mode (Single-pass AI)','Standard queue priority'].map(f => (
+                  <li key={f} className="flex items-center gap-3 text-zinc-300"><CheckCircle2 className="text-amber-500 shrink-0" size={18}/>{f}</li>
+                ))}
+              </ul>
+              <Link href="/auth/login" className="block w-full text-center bg-zinc-800 hover:bg-zinc-700 text-white py-3 rounded-full font-bold transition-all duration-300">
+                Start Free
+              </Link>
+            </motion.div>
+
+            {/* Pro Tier - Featured */}
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              whileHover={{ y: -12, scale: 1.03 }}
+              className="relative p-8 rounded-3xl bg-zinc-900 border-2 border-amber-500 md:-translate-y-4 shadow-2xl shadow-amber-500/15 overflow-hidden group cursor-default"
+            >
+              {/* Animated amber glow */}
+              <div className="absolute inset-0 pointer-events-none">
+                <div className="absolute inset-0 opacity-30" style={{background: 'radial-gradient(circle at 50% -20%, rgba(212,168,83,0.35) 0%, transparent 65%)'}} />
+                <motion.div
+                  animate={{ opacity: [0.15, 0.35, 0.15] }}
+                  transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
+                  className="absolute inset-0"
+                  style={{background: 'radial-gradient(circle at 50% 50%, rgba(212,168,83,0.12) 0%, transparent 70%)'}}
+                />
+              </div>
+              <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-amber-400 to-transparent" />
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-amber-500 text-black px-5 py-1 rounded-full text-sm font-bold shadow-lg shadow-amber-500/30">
+                MOST POPULAR
+              </div>
+              <h3 className="text-2xl font-bold mb-2 mt-2 text-amber-400">Pro</h3>
+              <p className="text-zinc-400 mb-6">Designed for regular professional use.</p>
+              <div className="text-5xl font-bold mb-8">$10<span className="text-lg text-zinc-500 font-normal">/month</span></div>
+              <ul className="space-y-4 mb-8">
+                <li className="flex items-center gap-3 text-white"><CheckCircle2 className="text-amber-500 shrink-0" size={18}/> High usage supported</li>
+                <li className="flex items-center gap-3 text-zinc-400 text-sm pl-[26px] -mt-2">Fair usage applies</li>
+                {['Advanced Multi-pass Pipeline','Smart Controls & Templates','Expanded History Access'].map(f => (
+                  <li key={f} className="flex items-center gap-3 text-white font-medium"><CheckCircle2 className="text-amber-500 shrink-0" size={18}/>{f}</li>
+                ))}
+              </ul>
+              <Link href="/auth/login" className="relative block w-full text-center bg-amber-500 hover:bg-amber-400 text-black py-3 rounded-full font-bold transition-all duration-300 shadow-[0_0_20px_rgba(212,168,83,0.5)] hover:shadow-[0_0_30px_rgba(212,168,83,0.7)]">
+                Upgrade to Pro
+              </Link>
+            </motion.div>
+
+            {/* Premium Tier */}
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              whileHover={{ y: -8, scale: 1.02 }}
+              className="relative p-8 rounded-3xl bg-zinc-900/80 border border-zinc-800 backdrop-blur-sm overflow-hidden group cursor-default"
+            >
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" style={{background: 'radial-gradient(circle at 50% 0%, rgba(212,168,83,0.06) 0%, transparent 70%)'}} />
+              <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-zinc-600 to-transparent group-hover:via-amber-500/40 transition-all duration-700" />
+              <h3 className="text-2xl font-bold mb-2">Premium</h3>
+              <p className="text-zinc-400 mb-6">For power users and heavy workloads.</p>
+              <div className="text-5xl font-bold mb-8">$20<span className="text-lg text-zinc-500 font-normal">/month</span></div>
+              <ul className="space-y-4 mb-8">
+                {['Maximum usage supported','Ultra Humanization Quality','Advanced Templates','Fastest processing priority'].map(f => (
+                  <li key={f} className="flex items-center gap-3 text-zinc-300"><CheckCircle2 className="text-amber-500 shrink-0" size={18}/>{f}</li>
+                ))}
+              </ul>
+              <Link href="/auth/login" className="block w-full text-center bg-zinc-800 hover:bg-zinc-700 text-white py-3 rounded-full font-bold transition-all duration-300">
+                Upgrade to Premium
+              </Link>
+            </motion.div>
           </div>
         </div>
+
+        <style>{`
+          @keyframes auroraMove1 { from { transform: translate(0,0); } to { transform: translate(80px, 60px); } }
+          @keyframes auroraMove2 { from { transform: translate(0,0); } to { transform: translate(-80px, -60px); } }
+        `}</style>
       </section>
 
       {/* FAQ */}
-      <section className="py-24 px-6 bg-[#050505]">
+      <section className="relative z-10 py-24 px-6 bg-[#050505]">
         <div className="max-w-3xl mx-auto">
           <h2 className="text-3xl font-display font-bold mb-12 text-center">Frequently Asked Questions</h2>
           <div className="space-y-4">
@@ -265,19 +322,30 @@ export default function LandingPage() {
               { q: 'What AI models do you use?', a: 'We use a combination of models. Fast passes utilize OpenAI GPT-4o-mini for speed and structure, while our Advanced polishing pass uses Anthropic Claude 3.5 Sonnet, which currently produces the most nuanced, human-like text on the market.' },
               { q: 'Do I lose the original meaning of my text?', a: 'No. Our strict prompt engineering ensures that all factual claims, statistics, and core arguments remain intact. We only change HOW it is said, not WHAT is said.' }
             ].map((faq, i) => (
-              <div key={i} className="border border-zinc-800 rounded-xl bg-zinc-900/50 overflow-hidden">
+              <div key={i} className="border border-zinc-800 rounded-xl bg-zinc-900/50">
                 <button 
+                  type="button"
                   onClick={() => toggleFaq(i)}
-                  className="w-full text-left p-6 flex justify-between items-center hover:bg-zinc-800/50 transition-colors focus:outline-none"
+                  className="w-full text-left p-6 flex justify-between items-center hover:bg-zinc-800/50 transition-colors focus:outline-none cursor-pointer"
                 >
-                  <span className="font-bold text-lg">{faq.q}</span>
-                  <ChevronDown className={`transition-transform duration-300 ${activeFaq === i ? 'rotate-180' : ''}`} />
+                  <span className="font-bold text-lg pr-4">{faq.q}</span>
+                  <ChevronDown className={`shrink-0 transition-transform duration-300 ${activeFaq === i ? 'rotate-180' : ''}`} />
                 </button>
-                {activeFaq === i && (
-                  <div className="p-6 pt-0 text-zinc-400 leading-relaxed">
-                    {faq.a}
-                  </div>
-                )}
+                <AnimatePresence>
+                  {activeFaq === i && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: 'auto', opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3, ease: 'easeInOut' }}
+                      className="overflow-hidden"
+                    >
+                      <div className="px-6 pb-6 text-zinc-400 leading-relaxed">
+                        {faq.a}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </div>
             ))}
           </div>

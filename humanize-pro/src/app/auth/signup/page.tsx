@@ -5,7 +5,7 @@ import { CheckCircle2 } from 'lucide-react'
 export default function SignupPage({
   searchParams,
 }: {
-  searchParams: { message: string }
+  searchParams: { message?: string, type?: string }
 }) {
   return (
     <div className="min-h-screen w-full flex bg-black text-white font-sans selection:bg-amber-500/30">
@@ -33,7 +33,7 @@ export default function SignupPage({
           <div className="mt-12 space-y-4">
             <div className="flex items-center gap-3 text-zinc-300">
               <CheckCircle2 className="text-amber-500" size={20} />
-              <span>Free 1,000 words daily limit</span>
+              <span>Make AI writing sound authentically human</span>
             </div>
             <div className="flex items-center gap-3 text-zinc-300">
               <CheckCircle2 className="text-amber-500" size={20} />
@@ -41,11 +41,11 @@ export default function SignupPage({
             </div>
             <div className="flex items-center gap-3 text-zinc-300">
               <CheckCircle2 className="text-amber-500" size={20} />
-              <span>Multiple tones and use cases</span>
+              <span>Multiple tones and smart templates</span>
             </div>
             <div className="flex items-center gap-3 text-zinc-300">
               <CheckCircle2 className="text-amber-500" size={20} />
-              <span>Guaranteed to bypass detectors</span>
+              <span>Guaranteed to bypass AI detectors</span>
             </div>
           </div>
         </div>
@@ -130,7 +130,7 @@ export default function SignupPage({
             </button>
             
             {searchParams?.message && (
-              <div className="mt-6 p-4 bg-amber-500/10 text-amber-500 text-sm rounded-lg border border-amber-500/20 text-center">
+              <div className={`mt-6 p-4 text-sm rounded-lg border text-center ${searchParams.type === 'success' ? 'bg-green-500/10 text-green-500 border-green-500/20' : 'bg-amber-500/10 text-amber-500 border-amber-500/20'}`}>
                 {searchParams.message}
               </div>
             )}
