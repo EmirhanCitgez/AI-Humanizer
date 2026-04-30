@@ -20,32 +20,53 @@ export default function SignupPage({
             <span className="text-amber-500">✦</span> HumanizeAI Pro
           </div>
           
-          <div className="space-y-6">
+          {/* Student badge */}
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-amber-500/30 bg-amber-500/10 text-amber-400 text-sm font-medium mb-8">
+            <span>🎓</span> Built for students & academics
+          </div>
+
+          <div className="space-y-4 mb-10">
             <h2 className="text-4xl font-display font-bold leading-tight">
-              Start writing like a <br/>
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-200 to-amber-500">true professional.</span>
+              Turn your AI drafts into <br/>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-200 to-amber-500">undetectable essays.</span>
             </h2>
             <p className="text-lg text-zinc-400 leading-relaxed">
-              Join thousands of creators who trust our platform to eliminate robotic tones from their content.
+              Thousands of students trust HumanizeAI Pro to submit AI-assisted work that bypasses Turnitin, GPTZero, and every major detector — while keeping their original arguments intact.
             </p>
           </div>
+
+          {/* Social proof stats */}
+          <div className="grid grid-cols-3 gap-4 mb-10 p-4 rounded-2xl bg-zinc-900/50 border border-zinc-800/60">
+            <div className="text-center">
+              <p className="text-2xl font-bold text-amber-400">99%</p>
+              <p className="text-xs text-zinc-500 mt-1">Human score</p>
+            </div>
+            <div className="text-center border-x border-zinc-800">
+              <p className="text-2xl font-bold text-white">50k+</p>
+              <p className="text-xs text-zinc-500 mt-1">Students</p>
+            </div>
+            <div className="text-center">
+              <p className="text-2xl font-bold text-white">3 free</p>
+              <p className="text-xs text-zinc-500 mt-1">Daily uses</p>
+            </div>
+          </div>
           
-          <div className="mt-12 space-y-4">
+          <div className="space-y-3">
             <div className="flex items-center gap-3 text-zinc-300">
-              <CheckCircle2 className="text-amber-500" size={20} />
-              <span>Make AI writing sound authentically human</span>
+              <CheckCircle2 className="text-amber-500 shrink-0" size={18} />
+              <span>Bypasses Turnitin, GPTZero & Originality.ai</span>
             </div>
             <div className="flex items-center gap-3 text-zinc-300">
-              <CheckCircle2 className="text-amber-500" size={20} />
-              <span>Advanced 4-pass linguistic rewrite</span>
+              <CheckCircle2 className="text-amber-500 shrink-0" size={18} />
+              <span>Preserves your arguments & citations</span>
             </div>
             <div className="flex items-center gap-3 text-zinc-300">
-              <CheckCircle2 className="text-amber-500" size={20} />
-              <span>Multiple tones and smart templates</span>
+              <CheckCircle2 className="text-amber-500 shrink-0" size={18} />
+              <span>Academic, casual & professional tones</span>
             </div>
             <div className="flex items-center gap-3 text-zinc-300">
-              <CheckCircle2 className="text-amber-500" size={20} />
-              <span>Guaranteed to bypass AI detectors</span>
+              <CheckCircle2 className="text-amber-500 shrink-0" size={18} />
+              <span>Free forever — no credit card needed</span>
             </div>
           </div>
         </div>

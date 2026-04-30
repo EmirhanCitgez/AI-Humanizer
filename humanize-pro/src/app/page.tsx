@@ -223,7 +223,7 @@ export default function LandingPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              whileHover={{ y: -8, scale: 1.02 }}
+              whileHover={{ y: -8, scale: 1.02, transition: { duration: 0.15, ease: 'easeOut' } }}
               className="relative p-8 rounded-3xl bg-zinc-900/80 border border-zinc-800 backdrop-blur-sm overflow-hidden group cursor-default"
             >
               <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" style={{background: 'radial-gradient(circle at 50% 0%, rgba(212,168,83,0.08) 0%, transparent 70%)'}} />
@@ -247,8 +247,8 @@ export default function LandingPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              whileHover={{ y: -12, scale: 1.03 }}
-              className="relative p-8 rounded-3xl bg-zinc-900 border-2 border-amber-500 md:-translate-y-4 shadow-2xl shadow-amber-500/15 overflow-hidden group cursor-default"
+              whileHover={{ y: -12, scale: 1.03, transition: { duration: 0.15, ease: 'easeOut' } }}
+              className="relative pt-12 pb-8 px-8 rounded-3xl bg-zinc-900 border-2 border-amber-500 md:-translate-y-4 shadow-2xl shadow-amber-500/15 overflow-hidden group cursor-default"
             >
               {/* Animated amber glow */}
               <div className="absolute inset-0 pointer-events-none">
@@ -261,10 +261,13 @@ export default function LandingPage() {
                 />
               </div>
               <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-amber-400 to-transparent" />
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-amber-500 text-black px-5 py-1 rounded-full text-sm font-bold shadow-lg shadow-amber-500/30">
-                MOST POPULAR
+              {/* Badge - inside card at top center */}
+              <div className="absolute top-0 left-0 right-0 flex justify-center">
+                <div className="bg-amber-500 text-black px-5 py-1.5 rounded-b-xl text-xs font-bold tracking-wider shadow-lg shadow-amber-500/30">
+                  MOST POPULAR
+                </div>
               </div>
-              <h3 className="text-2xl font-bold mb-2 mt-2 text-amber-400">Pro</h3>
+              <h3 className="text-2xl font-bold mb-2 text-amber-400">Pro</h3>
               <p className="text-zinc-400 mb-6">Designed for regular professional use.</p>
               <div className="text-5xl font-bold mb-8">$10<span className="text-lg text-zinc-500 font-normal">/month</span></div>
               <ul className="space-y-4 mb-8">
@@ -285,7 +288,7 @@ export default function LandingPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              whileHover={{ y: -8, scale: 1.02 }}
+              whileHover={{ y: -8, scale: 1.02, transition: { duration: 0.15, ease: 'easeOut' } }}
               className="relative p-8 rounded-3xl bg-zinc-900/80 border border-zinc-800 backdrop-blur-sm overflow-hidden group cursor-default"
             >
               <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" style={{background: 'radial-gradient(circle at 50% 0%, rgba(212,168,83,0.06) 0%, transparent 70%)'}} />
