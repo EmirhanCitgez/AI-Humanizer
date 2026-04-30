@@ -58,6 +58,26 @@ export async function logout() {
   redirect('/auth/login')
 }
 
+export async function signInWithGoogle() {
+  const supabase = createClient()
+  const origin = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'
+
+  const { data, error } = await supabase.auth.signInWithOAuth({
+    provider: 'google',
+    options: {
+      redirectTo: `${origin}/auth/callback`,
+    },
+  })
+
+  if (error) {
+    redirect(`/auth/login?message=${encodeURIComponent(error.message)}`)
+  }
+
+  if (data.url) {
+    redirect(data.url)
+  }
+}
+
 export async function deleteAccount() {
   const supabase = createClient()
   const { data: { user } } = await supabase.auth.getUser()
