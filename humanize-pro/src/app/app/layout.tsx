@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { Zap, LayoutTemplate, Clock, Settings, User } from 'lucide-react'
+import { Zap, LayoutTemplate, Clock, Settings } from 'lucide-react'
 import { createClient } from '@/lib/supabase/server'
 
 export default async function AppLayout({ children }: { children: React.ReactNode }) {

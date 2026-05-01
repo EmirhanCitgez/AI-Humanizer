@@ -9,7 +9,7 @@ import Link from 'next/link'
 
 export default function TemplatesPage() {
   const router = useRouter()
-  const { setTone, setMode } = useEditorStore()
+  const { setTone } = useEditorStore()
   const [plan, setPlan] = useState<'free' | 'pro' | null>(null)
 
   useEffect(() => {

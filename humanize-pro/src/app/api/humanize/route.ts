@@ -77,8 +77,8 @@ export async function POST(req: NextRequest) {
         plan: plan,
       })
       streamResult = await pipeline.execute()
-    } catch (e: any) {
-      console.warn("AI API failed, falling back to mock stream:", e.message)
+    } catch (e: unknown) {
+      console.warn("AI API failed, falling back to mock stream:", e instanceof Error ? e.message : String(e))
       
       // Create a mock stream using Vercel AI SDK DataStream protocol
       const encoder = new TextEncoder();

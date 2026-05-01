@@ -52,7 +52,7 @@ export default function LandingPage() {
               Make AI writing sound <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-200 to-amber-500">authentically human.</span>
             </h1>
             <p className="text-lg text-zinc-400 mb-10 leading-relaxed max-w-xl">
-              Don't let robotic tones ruin your message. Our 4-pass linguistic pipeline removes AI patterns, varies sentence structure, and injects natural rhythm so your content connects and bypasses detection.
+              Don&apos;t let robotic tones ruin your message. Our 4-pass linguistic pipeline removes AI patterns, varies sentence structure, and injects natural rhythm so your content connects and bypasses detection.
             </p>
             <div className="flex flex-col sm:flex-row items-center gap-4">
               <Link href="/auth/login" className="w-full sm:w-auto bg-amber-500 hover:bg-amber-400 text-black px-8 py-4 rounded-full text-lg font-bold transition-all flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(212,168,83,0.3)]">
@@ -68,7 +68,7 @@ export default function LandingPage() {
                 <div className="flex-1 p-4 border-r border-zinc-800 bg-zinc-900">
                   <div className="text-xs font-bold text-zinc-500 mb-2">ROBOTIC AI INPUT</div>
                   <p className="text-sm text-zinc-400 font-mono leading-relaxed">
-                    "In today's fast-paced digital world, it is crucial to leverage cutting-edge paradigms. Furthermore, utilizing these tools will unlock unprecedented synergies. In conclusion, adapting is paramount."
+                    &ldquo;In today&apos;s fast-paced digital world, it is crucial to leverage cutting-edge paradigms. Furthermore, utilizing these tools will unlock unprecedented synergies. In conclusion, adapting is paramount.&rdquo;
                   </p>
                 </div>
                 <div className="flex-1 p-4 bg-amber-500/5 relative overflow-hidden">
@@ -77,7 +77,7 @@ export default function LandingPage() {
                     <Sparkles size={12} /> HUMANIZED OUTPUT
                   </div>
                   <p className="text-sm text-zinc-200 leading-relaxed">
-                    "If you want to keep up online, you have to use the best tools available. Finding the right software changes everything—it makes your team faster and more connected. The bottom line? You either adapt or fall behind."
+                    &ldquo;If you want to keep up online, you have to use the best tools available. Finding the right software changes everything—it makes your team faster and more connected. The bottom line? You either adapt or fall behind.&rdquo;
                   </p>
                 </div>
               </div>
@@ -115,7 +115,7 @@ export default function LandingPage() {
           <div className="text-center mb-20">
             <h2 className="text-4xl font-display font-bold mb-4">Beyond simple paraphrasing</h2>
             <p className="text-xl text-zinc-400 max-w-2xl mx-auto">
-              Most "humanizers" just spin synonyms. We built a sophisticated 4-pass linguistic pipeline that reconstructs your text from the ground up.
+              Most &ldquo;humanizers&rdquo; just spin synonyms. We built a sophisticated 4-pass linguistic pipeline that reconstructs your text from the ground up.
             </p>
           </div>
 

@@ -1,6 +1,6 @@
 import { signup, signInWithGoogle } from '../actions'
 import Link from 'next/link'
-import { CheckCircle2, Mail, ArrowRight, Inbox } from 'lucide-react'
+import { CheckCircle2, ArrowRight, Inbox } from 'lucide-react'
 
 export default function SignupPage({
   searchParams,
@@ -31,7 +31,7 @@ export default function SignupPage({
 
           <h1 className="text-3xl font-display font-bold text-white mb-3">Check your inbox</h1>
           <p className="text-zinc-400 text-base leading-relaxed mb-8">
-            We've sent a confirmation link to your email address.
+            We&apos;ve sent a confirmation link to your email address.
             <br />
             Click the link to activate your account and start humanizing.
           </p>
@@ -60,7 +60,7 @@ export default function SignupPage({
           </Link>
 
           <p className="text-zinc-600 text-xs mt-6">
-            Didn't receive an email? Check your spam folder or{' '}
+            Didn&apos;t receive an email? Check your spam folder or{' '}
             <Link href="/auth/signup" className="text-zinc-400 hover:text-amber-500 transition-colors underline underline-offset-4">
               try again
             </Link>

@@ -1,4 +1,4 @@
-import { Settings, User, CreditCard, Key, CheckCircle2, Zap, Shield, Clock, Download, RefreshCcw, Copy, ExternalLink, ChevronRight, BarChart3 } from 'lucide-react'
+import { Settings, User, CreditCard, Key, CheckCircle2, Zap, Shield, Copy, ExternalLink, BarChart3 } from 'lucide-react'
 import { createClient } from '@/lib/supabase/server'
 import Link from 'next/link'
 import { logout, deleteAccount } from '@/app/auth/actions'

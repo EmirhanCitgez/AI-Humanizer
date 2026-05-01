@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button'
 import { useCompletion } from '@ai-sdk/react'
 import { useEffect, useState } from 'react'
 import { createClient } from '@/lib/supabase/client'
-import { Lock, Sparkles, BarChart3, AlertTriangle } from 'lucide-react'
+import { Lock, Sparkles, AlertTriangle } from 'lucide-react'
 
 export default function HumanizePage() {
   const { inputText, tone, mode, useCase, setInput, setTone, setMode, setOutput, setIsProcessing } = useEditorStore()

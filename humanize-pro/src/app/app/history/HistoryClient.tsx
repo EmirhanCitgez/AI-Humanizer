@@ -1,14 +1,14 @@
 'use client'
 
 import { useState, useTransition } from 'react'
-import { Clock, Copy, Trash2, RotateCcw, AlertTriangle, ChevronRight, Lock, FileText, CheckCircle2 } from 'lucide-react'
+import { Clock, Copy, Trash2, RotateCcw, AlertTriangle, Lock, FileText, CheckCircle2 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { deleteHistoryItem } from './actions'
 
-export default function HistoryClient({ initialRewrites, plan }: { initialRewrites: any[], plan: string }) {
+export default function HistoryClient({ initialRewrites, plan }: { initialRewrites: Record<string, unknown>[], plan: string }) {
   const [rewrites, setRewrites] = useState(initialRewrites)
   const [copiedId, setCopiedId] = useState<number | null>(null)
-  const [isPending, startTransition] = useTransition()
+  const [, startTransition] = useTransition()
 
   const isFree = plan === 'free'
   const displayLimit = isFree ? 10 : rewrites.length

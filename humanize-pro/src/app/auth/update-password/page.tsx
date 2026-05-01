@@ -1,5 +1,4 @@
 import { updatePassword } from '../actions'
-import Link from 'next/link'
 
 export default function UpdatePasswordPage({
   searchParams,

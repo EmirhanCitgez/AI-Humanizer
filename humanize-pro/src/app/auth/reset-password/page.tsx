@@ -1,6 +1,5 @@
 import { requestPasswordReset } from '../actions'
 import Link from 'next/link'
-import { Sparkles, BrainCircuit } from 'lucide-react'
 
 export default function ResetPasswordPage({
   searchParams,
@@ -17,7 +16,7 @@ export default function ResetPasswordPage({
         
         <div className="relative z-10 max-w-lg">
           <div className="flex items-center gap-2 text-2xl font-logo mb-12">
-            <span className="text-amber-500">✦</span> LexoraAI
+            <span className="text-amber-500">\u2726</span> LexoraAI
           </div>
           
           <div className="space-y-6">
@@ -26,7 +25,7 @@ export default function ResetPasswordPage({
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-200 to-amber-500">your workspace.</span>
             </h2>
             <p className="text-lg text-zinc-400 leading-relaxed">
-              Don't worry, it happens to the best of us. Enter your email and we'll help you get back on track.
+              Don&apos;t worry, it happens to the best of us. Enter your email and we&apos;ll help you get back on track.
             </p>
           </div>
         </div>
