@@ -5,8 +5,18 @@ import { Clock, Copy, Trash2, RotateCcw, AlertTriangle, Lock, FileText, CheckCir
 import { Button } from '@/components/ui/button'
 import { deleteHistoryItem } from './actions'
 
-export default function HistoryClient({ initialRewrites, plan }: { initialRewrites: Record<string, unknown>[], plan: string }) {
-  const [rewrites, setRewrites] = useState(initialRewrites)
+interface Rewrite {
+  id: number
+  tone: string
+  mode: string
+  input_text: string
+  output_text: string
+  output_words?: number
+  created_at: string
+}
+
+export default function HistoryClient({ initialRewrites, plan }: { initialRewrites: Rewrite[], plan: string }) {
+  const [rewrites, setRewrites] = useState<Rewrite[]>(initialRewrites)
   const [copiedId, setCopiedId] = useState<number | null>(null)
   const [, startTransition] = useTransition()
 
