@@ -1,27 +1,49 @@
+'use client'
+
 import { signup, signInWithGoogle } from '../actions'
 import Link from 'next/link'
-import { CheckCircle2, ArrowRight, Inbox } from 'lucide-react'
+import { CheckCircle2, ArrowRight, Inbox, Loader2 } from 'lucide-react'
+import { useFormStatus } from 'react-dom'
+import { useSearchParams } from 'next/navigation'
+import { Suspense } from 'react'
 
-export default function SignupPage({
-  searchParams,
-}: {
-  searchParams: { message?: string, type?: string }
-}) {
+function SubmitButton() {
+  const { pending } = useFormStatus()
+  return (
+    <button
+      type="submit"
+      disabled={pending}
+      className="w-full bg-amber-500 text-black hover:bg-amber-400 h-12 rounded-lg font-bold transition-all active:scale-[0.98] flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(212,168,83,0.3)] disabled:opacity-70 disabled:cursor-not-allowed"
+    >
+      {pending ? (
+        <>
+          <Loader2 size={18} className="animate-spin" />
+          Creating account...
+        </>
+      ) : (
+        'Create Account →'
+      )}
+    </button>
+  )
+}
+
+function SignupPageInner() {
+  const searchParams = useSearchParams()
+  const type = searchParams.get('type')
+  const message = searchParams.get('message')
+
   // Email confirmation success screen
-  if (searchParams?.type === 'success') {
+  if (type === 'success') {
     return (
       <div className="min-h-screen w-full flex items-center justify-center bg-black text-white font-sans selection:bg-amber-500/30 relative overflow-hidden">
-        {/* Background glow */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-amber-500/8 rounded-full blur-[140px] pointer-events-none" />
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f15_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f15_1px,transparent_1px)] bg-[size:32px_32px]" />
 
         <div className="relative z-10 max-w-md w-full mx-auto px-6 text-center">
-          {/* Logo */}
           <Link href="/" className="inline-flex items-center gap-2 text-xl font-logo mb-12 hover:opacity-80 transition-opacity">
             <span className="text-amber-500">✦</span> LexoraAI
           </Link>
 
-          {/* Icon */}
           <div className="relative mx-auto mb-8 w-24 h-24">
             <div className="absolute inset-0 bg-amber-500/20 rounded-full blur-xl" />
             <div className="relative w-24 h-24 rounded-full bg-zinc-900 border-2 border-amber-500/40 flex items-center justify-center">
@@ -36,7 +58,6 @@ export default function SignupPage({
             Click the link to activate your account and start humanizing.
           </p>
 
-          {/* Steps */}
           <div className="bg-zinc-900/60 border border-zinc-800 rounded-2xl p-6 mb-8 text-left space-y-4">
             {[
               { icon: '1', text: 'Open your email inbox' },
@@ -54,7 +75,7 @@ export default function SignupPage({
 
           <Link
             href="/auth/login"
-            className="inline-flex items-center gap-2 w-full justify-center bg-amber-500 hover:bg-amber-400 text-black py-3 px-6 rounded-xl font-bold transition-all shadow-[0_0_20px_rgba(212,168,83,0.3)] hover:shadow-[0_0_30px_rgba(212,168,83,0.5)]"
+            className="inline-flex items-center gap-2 w-full justify-center bg-amber-500 hover:bg-amber-400 text-black py-3 px-6 rounded-xl font-bold transition-all shadow-[0_0_20px_rgba(212,168,83,0.3)]"
           >
             Go to Login <ArrowRight size={18} />
           </Link>
@@ -73,8 +94,7 @@ export default function SignupPage({
 
   return (
     <div className="min-h-screen w-full flex bg-black text-white font-sans selection:bg-amber-500/30">
-
-      {/* Left side - Decorative */}
+      {/* Left side */}
       <div className="hidden lg:flex w-1/2 relative bg-zinc-950 items-center justify-center p-12 overflow-hidden border-r border-white/5">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:14px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-amber-500/10 rounded-full blur-[120px] pointer-events-none" />
@@ -84,7 +104,6 @@ export default function SignupPage({
             <span className="text-amber-500">✦</span> LexoraAI
           </Link>
 
-          {/* Student badge */}
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-amber-500/30 bg-amber-500/10 text-amber-400 text-sm font-medium mb-8">
             <span>🎓</span> Built for students, researchers and professionals.
           </div>
@@ -99,7 +118,6 @@ export default function SignupPage({
             </p>
           </div>
 
-          {/* Social proof stats */}
           <div className="grid grid-cols-3 gap-4 mb-10 p-4 rounded-2xl bg-zinc-900/50 border border-zinc-800/60">
             <div className="text-center">
               <p className="text-2xl font-bold text-amber-400">99%</p>
@@ -118,15 +136,15 @@ export default function SignupPage({
           <div className="space-y-3">
             <div className="flex items-center gap-3 text-zinc-300">
               <CheckCircle2 className="text-amber-500 shrink-0" size={18} />
-              <span>Bypasses Turnitin, GPTZero & Originality.ai</span>
+              <span>Bypasses Turnitin, GPTZero &amp; Originality.ai</span>
             </div>
             <div className="flex items-center gap-3 text-zinc-300">
               <CheckCircle2 className="text-amber-500 shrink-0" size={18} />
-              <span>Preserves your arguments & citations</span>
+              <span>Preserves your arguments &amp; citations</span>
             </div>
             <div className="flex items-center gap-3 text-zinc-300">
               <CheckCircle2 className="text-amber-500 shrink-0" size={18} />
-              <span>Academic, casual & professional tones</span>
+              <span>Academic, casual &amp; professional tones</span>
             </div>
             <div className="flex items-center gap-3 text-zinc-300">
               <CheckCircle2 className="text-amber-500 shrink-0" size={18} />
@@ -183,16 +201,11 @@ export default function SignupPage({
             </div>
 
             <div className="pt-2">
-              <button
-                type="submit"
-                className="w-full bg-amber-500 text-black hover:bg-amber-400 h-12 rounded-lg font-bold transition-all active:scale-[0.98] flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(212,168,83,0.3)]"
-              >
-                Create Account →
-              </button>
+              <SubmitButton />
             </div>
           </form>
 
-          <div className="space-y-5 mt-5">
+          <div className="space-y-5">
             <div className="relative">
               <div className="absolute inset-0 flex items-center">
                 <div className="w-full border-t border-zinc-800"></div>
@@ -217,9 +230,9 @@ export default function SignupPage({
               </button>
             </form>
 
-            {searchParams?.message && (
-              <div className={`p-4 text-sm rounded-lg border text-center ${searchParams.type === 'success' ? 'bg-green-500/10 text-green-500 border-green-500/20' : 'bg-amber-500/10 text-amber-500 border-amber-500/20'}`}>
-                {searchParams.message}
+            {message && (
+              <div className={`p-4 text-sm rounded-lg border text-center ${type === 'success' ? 'bg-green-500/10 text-green-500 border-green-500/20' : 'bg-amber-500/10 text-amber-500 border-amber-500/20'}`}>
+                {message}
               </div>
             )}
 
@@ -233,5 +246,13 @@ export default function SignupPage({
         </div>
       </div>
     </div>
+  )
+}
+
+export default function SignupPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-black" />}>
+      <SignupPageInner />
+    </Suspense>
   )
 }

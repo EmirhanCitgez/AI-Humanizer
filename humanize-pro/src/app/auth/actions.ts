@@ -102,7 +102,7 @@ export async function signup(formData: FormData) {
 </html>`,
   })
 
-  redirect('/auth/signup?message=Check your email to confirm your account — link expires in 24 hours.&type=success')
+  redirect('/auth/signup?type=success&message=Check+your+email+to+confirm+your+account')
 }
 
 export async function logout() {
